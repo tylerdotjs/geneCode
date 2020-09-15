@@ -1,0 +1,34 @@
+{
+  "name": "genecode",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "dependencies": {
+    "express": "^4.17.1",
+    "http-server": "^0.12.3",
+    "jquery": "^3.5.1",
+    "matter-js": "^0.14.2"
+  },
+  "devDependencies": {
+    "nodemon-webpack-plugin": "^4.3.2",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "addServer": "npm i -g http-server",
+    "serve": "http-server",
+    "build": "webpack --config webpack.config.js",
+    "dev": "webpack --config webpack.config.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tylerdotjs/geneCode.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tylerdotjs/geneCode/issues"
+  },
+  "homepage": "https://github.com/tylerdotjs/geneCode#readme"
+}

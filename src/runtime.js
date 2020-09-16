@@ -11,18 +11,20 @@ var render = Matter.Render.create({
     element: document.body,
     engine: engine
 });
-engine.world.gravity.y = 0
+engine.world.gravity.y = 0;
+engine.world.gravity.x = 0;
 
 Cell.world = engine.world
 const firstCellLocation = Matter.Vector.create(100, 100);
 var firstCell = new Cell(firstCellLocation);
 
-for(let i = 0; i < 100; i++){
-    firstCell.divide()
-}
+var loop = 0
 
 Matter.Events.on(engine, 'beforeUpdate', () => {
-    
+    if(loop < 100){
+        firstCell.divide()
+    }
+    loop++
 })
 Matter.Engine.run(engine);
 Matter.Render.run(render);

@@ -1,10 +1,8 @@
 const Matter = require('matter-js')
-import { createTiles } from './resourceTiles.js';
+import { createTiles } from './resources.js';
 import { Cell } from './cell.js';
 
-const tiles = createTiles(10, 10);
 var cells = [];
-Cell.tiles = tiles;
 
 var engine = Matter.Engine.create()
 var render = Matter.Render.create({
@@ -15,13 +13,14 @@ engine.world.gravity.y = 0;
 engine.world.gravity.x = 0;
 
 Cell.world = engine.world
-const firstCellLocation = Matter.Vector.create(100, 100);
+const firstCellLocation = Matter.Vector.create(render.element.clientWidth / 2, render.element.clientHeight / 2);
 var firstCell = new Cell(firstCellLocation);
+Matter.Body.setStatic(firstCell.body, true)
 
 var loop = 0
 
 Matter.Events.on(engine, 'beforeUpdate', () => {
-    if(loop < 100){
+    if(loop < 1000){
         firstCell.divide()
     }
     loop++

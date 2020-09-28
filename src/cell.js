@@ -1,5 +1,3 @@
-import { Tile } from './resourceTiles'
-
 const Matter = require('matter-js')
 
 export class Cell {
@@ -10,18 +8,11 @@ export class Cell {
         Matter.Body.setPosition(this.body, position)
         Matter.World.add(Cell.world, this.body)
     }
-    divide(offset = Matter.Vector.create(0,0)) {
+    divide() {
+        var offset = Matter.Vector.create(Math.sin(Math.random() * 6.3), Math.cos(Math.random() * 6.3))
         let pos = Matter.Vector.add(this.body.position, offset)
         let newCell = new Cell(pos)
-        console.log(newCell)
         return newCell
-    }
-    findTile(){
-        var bodyPos = this.body.position
-        var adjustedVector = Matter.Vector.create(Math.floor(bodyPos.x), Math.floor(bodyPos.y))
-        Matter.Vector.div(adjustedVector, Tile.scale)
-
-        return Cell.tiles[adjustedVector.x][adjustedVector.y]
     }
     update(){
         //console.log(this.body.position)
